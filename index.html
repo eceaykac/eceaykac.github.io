@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ece Aykac — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f7f7f7;
+    --bg-hover: #f0f0f0;
+    --ink: #111111;
+    --ink-mid: #444444;
+    --ink-muted: #888888;
+    --ink-faint: #bbbbbb;
+    --rule: #e5e5e5;
+    --dd: #6E4CF5;
+    --dd-bg: #f0eeff;
+    --meta: #0866FF;
+    --meta-bg: #e8f0ff;
+    --tw: #E6194B;
+    --tw-bg: #ffeef2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+
+  .topbar-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .topbar-links { display: flex; gap: 24px; }
+
+  .topbar-links a {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .topbar-links a:hover { color: var(--ink); }
+
+  /* HEADER */
+  .header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 56px 72px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 28px;
+    max-width: 620px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .header-bio {
+    font-size: 15px;
+    color: var(--ink-mid);
+    max-width: 500px;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .header-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    color: var(--ink-muted);
+    border-radius: 2px;
+  }
+
+  /* LAYOUT */
+  .layout {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 56px 96px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    padding-top: 48px;
+    padding-right: 40px;
+    position: sticky;
+    top: 52px;
+    height: fit-content;
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+
+  .sidebar nav a {
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 5px 0 5px 10px;
+    margin-left: -12px;
+    transition: color 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar nav a:hover { color: var(--ink); }
+
+  .sidebar nav a.active {
+    color: var(--ink);
+    border-left-color: var(--ink);
+    font-weight: 500;
+  }
+
+  .sidebar-stats {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stat-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  /* CONTENT */
+  .content { padding-top: 48px; }
+
+  /* SECTION */
+  .section { margin-bottom: 64px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .section-count {
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  /* FEATURED ROW */
+  .featured-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.15s;
+    overflow: hidden;
+  }
+
+  .featured-row:hover { background: var(--bg-secondary); }
+
+  /* THUMBNAIL */
+  .thumb {
+    width: 200px;
+    height: 140px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* PLACEHOLDER THUMBS */
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thumb-placeholder.dd-thumb { background: var(--dd-bg); }
+  .thumb-placeholder.meta-thumb { background: var(--meta-bg); }
+  .thumb-placeholder.tw-thumb { background: var(--tw-bg); }
+
+  .thumb-placeholder-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dd-thumb .thumb-placeholder-label { color: var(--dd); }
+  .meta-thumb .thumb-placeholder-label { color: var(--meta); }
+  .tw-thumb .thumb-placeholder-label { color: var(--tw); }
+
+  .thumb-placeholder-type {
+    font-size: 12px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--ink-muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* decorative circle */
+  .thumb-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
+    opacity: 0.15;
+  }
+
+  .dd-thumb::before { background: var(--dd); }
+  .meta-thumb::before { background: var(--meta); }
+  .tw-thumb::before { background: var(--tw); }
+
+  /* FEATURED BODY */
+  .featured-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .featured-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .featured-badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+
+  .featured-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .featured-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .featured-meta {
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  .featured-row:hover .row-arrow { color: var(--ink); transform: translate(2px, -2px); }
+
+  /* LIST ROW */
+  .list-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.12s;
+  }
+
+  .list-row:hover {
+    background: var(--bg-secondary);
+    padding-left: 12px;
+    margin-left: -12px;
+    padding-right: 12px;
+  }
+
+  .row-company {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  .row-company.dd { color: var(--dd); }
+  .row-company.meta { color: var(--meta); }
+  .row-company.tw { color: var(--tw); }
+
+  .row-title {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 400;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .row-type {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 300;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .archived { font-style: italic; }
+
+  .row-arrow {
+    font-size: 12px;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+  }
+
+  .list-row:hover .row-arrow {
+    color: var(--ink);
+    transform: translate(2px, -2px);
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding: 32px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer p { font-size: 12px; color: var(--ink-faint); font-weight: 300; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 720px) {
+    .topbar, .header, .footer { padding-left: 24px; padding-right: 24px; }
+    .header h1 { font-size: 36px; }
+    .layout { grid-template-columns: 1fr; padding-left: 24px; padding-right: 24px; }
+    .sidebar { position: static; padding-right: 0; padding-top: 24px; }
+    .sidebar nav { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .sidebar nav a { border-left: none; padding-left: 0; margin-left: 0; }
+    .sidebar-stats { flex-direction: row; margin-top: 24px; gap: 24px; }
+    .featured-row { grid-template-columns: 1fr; }
+    .thumb { width: 100%; height: 160px; }
+    .list-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-name" href="#">Ece Aykac</a>
+  <div class="topbar-links">
+    <a href="/cdn-cgi/l/email-protection#e3868086869184868da3848e828a8fcd808c8e">Email</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Resume</a>
+  </div>
+</div>
+
+<div class="header">
+  <h1>Content that moves<br><em>people and pipeline.</em></h1>
+  <p class="header-bio">10+ years translating complex AI, API, and developer platform technologies into clear narratives — for engineers, executives, and everyone in between.</p>
+  <div class="header-tags">
+    <span class="tag">Developer Content</span>
+    <span class="tag">API Platforms</span>
+    <span class="tag">Enterprise</span>
+    <span class="tag">Sales Enablement</span>
+    <span class="tag">Email & Nurture</span>
+    <span class="tag">Video & Demo</span>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <p class="sidebar-label">Sections</p>
+    <nav>
+      <a href="#developer">Developer</a>
+      <a href="#briefs">Briefs & Ebooks</a>
+      <a href="#blog">Blog & Guides</a>
+      <a href="#video">Video & Demo</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#social">Social</a>
+    </nav>
+    <div class="sidebar-stats">
+      <div>
+        <div class="stat-number">45</div>
+        <div class="stat-label">published pieces</div>
+      </div>
+      <div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">companies</div>
+      </div>
+      <div>
+        <div class="stat-number">10+</div>
+        <div class="stat-label">years</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="content">
+
+    <!-- DEVELOPER CONTENT -->
+    <section class="section" id="developer">
+      <div class="section-header">
+        <span class="section-title">Developer Content</span>
+        <span class="section-count">7</span>
+      </div>
+      <a class="featured-row" href="https://www.datadoghq.com/architecture" target="_blank">
+        <div class="thumb">
+          <img src="thumb-architecture.png" alt="Datadog Architecture Center">
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company dd">Datadog</span>
+          </div>
+          <div class="featured-title">Datadog Architecture Center</div>
+          <div class="featured-desc">Technical content hub with reference architectures, developer guides, and weekly editorial cadence — built from scratch with product and engineering.</div>
+          <div class="featured-meta">Technical Hub · 1K organic views in month one</div>
+        </div>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/blog/datadog-architecture-center/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Introducing the Datadog Architecture Center</span>
+        <span class="row-type">Blog Post</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/solutions/monitoring-consolidation/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Tool Consolidation — Unify Teams, Tools, and Technologies</span>
+        <span class="row-type">Solution Page</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/solutions/media-entertainment/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Media & Entertainment Solutions</span>
+        <span class="row-type">Solution Page</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210308183016/https://www.facebook.com/business/marketing-partners/creative-partners-video" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Facebook Marketing Partners — Creative & Video</span>
+        <span class="row-type">Developer Program <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210226173953/https://www.facebook.com/business/marketing-partners/lead-ads-partners-for-business" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Facebook Marketing Partners — Lead Ads</span>
+        <span class="row-type">Developer Program <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210309172134/https://www.facebook.com/business/marketing-partners/messaging-partners-for-businesses/" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Facebook Marketing Partners — Messaging</span>
+        <span class="row-type">Developer Program <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- SOLUTION BRIEFS & EBOOKS -->
+    <section class="section" id="briefs">
+      <div class="section-header">
+        <span class="section-title">Solution Briefs & Ebooks</span>
+        <span class="section-count">17</span>
+      </div>
+      <a class="featured-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/eBook-AWSCloudExcellence.pdf" target="_blank">
+        <div class="thumb">
+          <img src="thumb-aws-ebook.png" alt="Cloud Excellence Series">
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company dd">Datadog</span>
+          </div>
+          <div class="featured-title">Cloud Excellence Series</div>
+          <div class="featured-desc">6-ebook program covering migration and well-architected best practices across AWS, GCP, and Azure — for enterprise technical decision-makers.</div>
+          <div class="featured-meta">Ebook Series · Enterprise</div>
+        </div>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/eBook-GCPCloudExcellence.pdf?version=0" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Cloud Excellence: GCP Migration</span>
+        <span class="row-type">Ebook</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/eBook-AzureCloudExcellence.pdf?version=0" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Cloud Excellence: Azure Migration</span>
+        <span class="row-type">Ebook</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/Content-AWS.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Cloud Excellence: AWS Well-Architected</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/Content-SolutionBriefAzure.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Cloud Excellence: Azure Well-Architected</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/Content-SolutionBriefGCPMigrationPartner.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Cloud Excellence: GCP Well-Architected</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/SolutionBrief-DigitalTransformationPlatform.pdf?version=0" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Digital Transformation Platform</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/pdf/end-to-end-streaming-observability-solution-brief.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">End-to-End Streaming Observability</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/pdf/safeguarding-streaming-experience-audience-trust.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Safeguarding Streaming Experience & Audience Trust</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/pdf/operating-ai-orchestrated-media-platforms-with-confidence.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Operating AI-Orchestrated Media Platforms with Confidence</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/pdf/ensuring-consistent-delivery-across-media-ecosystems.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Ensuring Consistent Delivery Across Media Ecosystems</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://lp.datadoghq.com/rs/875-UVY-685/images/Content-SolutionBriefToolConsolidation.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Tool Consolidation Solution Brief</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/pdf/solutions-retail-ecommerce-black-friday.pdf" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Retail & Ecommerce: Black Friday Readiness</span>
+        <span class="row-type">Solution Brief</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="featured-row" href="https://web.archive.org/web/20170704153358/https://drive.google.com/open?id=0B1zCrQ269g1haUtaRG43aVVRMjA" target="_blank">
+        <div class="thumb">
+          <img src="thumb-twilio-roi.png" alt="Three Ways to Optimize Campaign ROI">
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company tw">Twilio</span>
+          </div>
+          <div class="featured-title">Three Ways to Optimize Campaign ROI</div>
+          <div class="featured-desc">Translating call tracking API capabilities into concrete campaign ROI strategies for marketing decision-makers.</div>
+          <div class="featured-meta">Ebook <span class="archived">· archived</span></div>
+        </div>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20201123062230/https://drive.google.com/file/d/1ssjR7Ie4koF1s3hmBPiXTVODYp-4K07L/view" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">The Marketer's Guide to APIs</span>
+        <span class="row-type">Ebook · Technical to Business <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210302065345/https://www.facebook.com/business/marketing-partners/partner-news/moving-with-video-playbook" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Grow Your Business with Advice from Our Partners</span>
+        <span class="row-type">Playbook <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20201022124357/https://www.twilio.com/learn/call-and-text-marketing/the-marketers-guide-to-text-messaging" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">The Marketer's Guide to Text Messaging</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- BLOG & GUIDES -->
+    <section class="section" id="blog">
+      <div class="section-header">
+        <span class="section-title">Blog Posts & Guides</span>
+        <span class="section-count">9</span>
+      </div>
+      <a class="featured-row" href="https://web.archive.org/web/20170704153358/https://martech.org/use-apis-increase-offline-conversions/" target="_blank">
+        <div class="thumb">
+          <div class="thumb-placeholder tw-thumb">
+            <div class="thumb-placeholder-label">Twilio · MarTech</div>
+            <div class="thumb-placeholder-type">Contributed Article</div>
+          </div>
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company tw">Twilio · MarTech</span>
+          </div>
+          <div class="featured-title">Use APIs to Increase Offline Conversions</div>
+          <div class="featured-desc">Third-party thought leadership placing Twilio's API capabilities in a broader marketing context — published in MarTech.</div>
+          <div class="featured-meta">Contributed Article <span class="archived">· archived</span></div>
+        </div>
+      </a>
+      <a class="list-row" href="http://web.archive.org/web/20171024035329/https://www.twilio.com/learn/call-and-text-marketing/track-calls-like-clicks" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Track Calls Like Clicks</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="http://web.archive.org/web/20201127175526/https://www.twilio.com/learn/call-and-text-marketing/call-tracking-when-to-build-and-when-to-buy" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Call Tracking: When to Build and When to Buy</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20170310012149/https://www.twilio.com/blog/2016/08/twilio-decodes-online-marketplaces.html" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Twilio Decodes Online Marketplaces</span>
+        <span class="row-type">Blog Post <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="http://web.archive.org/web/20170624113100/https://www.twilio.com/learn/call-and-text-marketing/call-tracking-for-marketing-agencies" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Call Tracking for Marketing Agencies</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="http://web.archive.org/web/20201123201135/https://www.twilio.com/learn/call-and-text-marketing/mobile-marketing-basics-sms-vs-push-notifications" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Mobile Marketing: SMS vs Push Notifications</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20201123201130/https://www.twilio.com/learn/call-and-text-marketing/a-guide-to-call-attribution" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">A Guide to Call Attribution</span>
+        <span class="row-type">Guide <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20230605043222/https://www.twilio.com/docs/glossary/what-is-dynamic-number-insertion" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">What is Dynamic Number Insertion?</span>
+        <span class="row-type">Glossary / SEO <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20230605043218/https://www.twilio.com/docs/glossary/what-is-call-attribution" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">What is Call Attribution?</span>
+        <span class="row-type">Glossary / SEO <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- VIDEOS & DEMOS -->
+    <section class="section" id="video">
+      <div class="section-header">
+        <span class="section-title">Videos & Demos</span>
+        <span class="section-count">6</span>
+      </div>
+      <a class="featured-row" href="https://youtu.be/vjNJgg50ti8" target="_blank">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/vjNJgg50ti8/maxresdefault.jpg" alt="Datadog for Tool Consolidation" onerror="this.parentNode.innerHTML='<div class=\'thumb-placeholder dd-thumb\'><div class=\'thumb-placeholder-label\'>Datadog</div><div class=\'thumb-placeholder-type\'>YouTube</div></div>'">
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company dd">Datadog</span>
+          </div>
+          <div class="featured-title">Datadog for Tool Consolidation</div>
+          <div class="featured-desc">Enterprise narrative on unifying teams, tools, and technologies — scripted and produced for technical and executive audiences.</div>
+          <div class="featured-meta">YouTube · 48,370 views</div>
+        </div>
+      </a>
+      <a class="list-row" href="https://www.youtube.com/watch?v=PqNYpXKsWrk" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Datadog for Cloud Operational Excellence</span>
+        <span class="row-type">YouTube · 11,415 views</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20220317195824/https://www.facebook.com/MetaforBusiness/videos/1098324657323519/" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Create Professional Videos with Meta Business Partners</span>
+        <span class="row-type">Social Video <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20220317195829/https://www.facebook.com/MetaforBusiness/videos/1048997492516258/" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Generate Leads for Your Business with a Meta Business Partner</span>
+        <span class="row-type">Social Video <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20220317195832/https://www.facebook.com/MetaforBusiness/videos/671725430871125/" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Drive Results with a Messaging Partner</span>
+        <span class="row-type">Social Video <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20220317195835/https://www.facebook.com/MetaforBusiness/videos/344316987340607/" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">5 Tips on Using Templates to Enhance Your Social Media Content</span>
+        <span class="row-type">Social Video <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="section" id="cases">
+      <div class="section-header">
+        <span class="section-title">Case Studies</span>
+        <span class="section-count">4</span>
+      </div>
+      <a class="featured-row" href="https://www.datadoghq.com/case-studies/auth0/" target="_blank">
+        <div class="thumb">
+          <div class="thumb-placeholder dd-thumb">
+            <div class="thumb-placeholder-label">Datadog</div>
+            <div class="thumb-placeholder-type">Case Study</div>
+          </div>
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company dd">Datadog</span>
+          </div>
+          <div class="featured-title">Auth0</div>
+          <div class="featured-desc">How a leading identity platform scales observability across its developer infrastructure with Datadog.</div>
+          <div class="featured-meta">Enterprise Case Study</div>
+        </div>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/customer-testimonial/forbes/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Forbes — Consistent digital experiences at scale</span>
+        <span class="row-type">Enterprise Case Study</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="http://web.archive.org/web/20201127181339/https://www.twilio.com/learn/call-and-text-marketing/track-hospitality-on-driving-roi-with-call-campaigns" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Hospitality: Driving ROI with Call Campaigns</span>
+        <span class="row-type">Case Study <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20201127181335/https://www.twilio.com/learn/call-and-text-marketing/scorpion-on-the-future-of-lead-tracking-and-analytics" target="_blank">
+        <span class="row-company tw">Twilio</span>
+        <span class="row-title">Scorpion on the Future of Lead Tracking and Analytics</span>
+        <span class="row-type">Case Study <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- SOCIAL CONTENT -->
+    <section class="section" id="social">
+      <div class="section-header">
+        <span class="section-title">Social Content</span>
+        <span class="section-count">4</span>
+      </div>
+      <a class="list-row" href="https://web.archive.org/web/20210302190721/https://www.facebook.com/business/marketing-partners/partner-news/moving-with-video-playbook" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">5 Tips for Leveling Up Your Ads</span>
+        <span class="row-type">Social Content <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210302065345/https://www.facebook.com/business/marketing-partners/partner-news/moving-with-video-playbook" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">5 Community Building Strategies</span>
+        <span class="row-type">Social Content <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210303024705/https://www.facebook.com/business/marketing-partners/partner-news/introducing-new-ways-for-partners-to-support-businesses-advertising-on-facebook" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Introducing New Ways for Partners to Support Businesses Advertising on Facebook</span>
+        <span class="row-type">Product Announcement <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://web.archive.org/web/20210302190721/https://www.facebook.com/business/marketing-partners/partner-news/introducing-a-brand-safety-certification-for-facebook-marketing-partners" target="_blank">
+        <span class="row-company meta">Meta</span>
+        <span class="row-title">Introducing a Brand Safety Certification for Facebook Marketing Partners</span>
+        <span class="row-type">Partner Announcement <span class="archived">· archived</span></span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </section>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Ece Aykac · Content & Product Marketing · San Francisco, CA</p>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#d4b1b7b1b1a6b3b1ba94b3b9b5bdb8fab7bbb9"><span class="__cf_email__" data-cfemail="7f1a1c1a1a0d181a113f18121e1613511c1012">[email&#160;protected]</span></a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Resume</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  const sections = document.querySelectorAll('section[id]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersect
