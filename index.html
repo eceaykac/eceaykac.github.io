@@ -111,7 +111,15 @@
     border: 1px solid var(--rule);
     color: var(--ink-muted);
     border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--bg);
+    user-select: none;
   }
+
+  .tag:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .tag.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .section.hidden { display: none; }
 
   /* LAYOUT */
   .layout {
@@ -450,12 +458,12 @@
   <h1>Content that moves<br><em>people and pipeline.</em></h1>
   <p class="header-bio">10+ years translating complex AI, API, and developer platform technologies into clear narratives — for engineers, executives, and everyone in between.</p>
   <div class="header-tags">
-    <span class="tag">Developer Content</span>
-    <span class="tag">API Platforms</span>
-    <span class="tag">Enterprise</span>
-    <span class="tag">Sales Enablement</span>
-    <span class="tag">Email & Nurture</span>
-    <span class="tag">Video & Demo</span>
+    <button class="tag active" data-filter="all">All</button>
+    <button class="tag" data-filter="developer,websites,blog">Developer</button>
+    <button class="tag" data-filter="briefs,cases,websites">Enterprise</button>
+    <button class="tag" data-filter="briefs,video">Sales Enablement</button>
+    <button class="tag" data-filter="social,email">Social & Email</button>
+    <button class="tag" data-filter="video">Video & Demo</button>
   </div>
 </div>
 
@@ -464,15 +472,17 @@
     <p class="sidebar-label">Sections</p>
     <nav>
       <a href="#developer">Developer</a>
+      <a href="#websites">Websites & Pages</a>
       <a href="#briefs">Briefs & Ebooks</a>
       <a href="#blog">Blog & Guides</a>
       <a href="#video">Video & Demo</a>
       <a href="#cases">Case Studies</a>
+      <a href="#email">Email & Sales Enablement</a>
       <a href="#social">Social</a>
     </nav>
     <div class="sidebar-stats">
       <div>
-        <div class="stat-number">45</div>
+        <div class="stat-number">46</div>
         <div class="stat-label">published pieces</div>
       </div>
       <div>
@@ -492,40 +502,16 @@
     <section class="section" id="developer">
       <div class="section-header">
         <span class="section-title">Developer Content</span>
-        <span class="section-count">7</span>
+        <span class="section-count">4</span>
       </div>
-      <a class="featured-row" href="https://www.datadoghq.com/architecture" target="_blank">
-        <div class="thumb">
-          <img src="thumb-architecture.png" alt="Datadog Architecture Center">
-        </div>
-        <div class="featured-body">
-          <div class="featured-top">
-            <span class="featured-badge">Featured</span>
-            <span class="row-company dd">Datadog</span>
-          </div>
-          <div class="featured-title">Datadog Architecture Center</div>
-          <div class="featured-desc">Technical content hub with reference architectures, developer guides, and weekly editorial cadence — built from scratch with product and engineering.</div>
-          <div class="featured-meta">Technical Hub · 1K organic views in month one</div>
-        </div>
-      </a>
+
       <a class="list-row" href="https://www.datadoghq.com/blog/datadog-architecture-center/" target="_blank">
         <span class="row-company dd">Datadog</span>
         <span class="row-title">Introducing the Datadog Architecture Center</span>
         <span class="row-type">Blog Post</span>
         <span class="row-arrow">↗</span>
       </a>
-      <a class="list-row" href="https://www.datadoghq.com/solutions/monitoring-consolidation/" target="_blank">
-        <span class="row-company dd">Datadog</span>
-        <span class="row-title">Tool Consolidation — Unify Teams, Tools, and Technologies</span>
-        <span class="row-type">Solution Page</span>
-        <span class="row-arrow">↗</span>
-      </a>
-      <a class="list-row" href="https://www.datadoghq.com/solutions/media-entertainment/" target="_blank">
-        <span class="row-company dd">Datadog</span>
-        <span class="row-title">Media & Entertainment Solutions</span>
-        <span class="row-type">Solution Page</span>
-        <span class="row-arrow">↗</span>
-      </a>
+
       <a class="list-row" href="https://web.archive.org/web/20210308183016/https://www.facebook.com/business/marketing-partners/creative-partners-video" target="_blank">
         <span class="row-company meta">Meta</span>
         <span class="row-title">Facebook Marketing Partners — Creative & Video</span>
@@ -546,7 +532,44 @@
       </a>
     </section>
 
-    <!-- SOLUTION BRIEFS & EBOOKS -->
+    <!-- WEBSITES & PAGES -->
+    <section class="section" id="websites">
+      <div class="section-header">
+        <span class="section-title">Websites & Pages</span>
+        <span class="section-count">3</span>
+      </div>
+
+      <a class="featured-row" href="https://www.datadoghq.com/architecture" target="_blank">
+        <div class="thumb">
+          <img src="thumb-architecture.png" alt="Datadog Architecture Center">
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company dd">Datadog</span>
+          </div>
+          <div class="featured-title">Datadog Architecture Center</div>
+          <div class="featured-desc">Technical content hub with reference architectures, developer guides, and weekly editorial cadence — built from scratch with product and engineering.</div>
+          <div class="featured-meta">Technical Hub · Developer · 1K organic views in month one</div>
+        </div>
+      </a>
+
+      <a class="list-row" href="https://www.datadoghq.com/solutions/monitoring-consolidation/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Tool Consolidation — Unify Teams, Tools, and Technologies</span>
+        <span class="row-type">Solution Page · Enterprise</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="list-row" href="https://www.datadoghq.com/solutions/media-entertainment/" target="_blank">
+        <span class="row-company dd">Datadog</span>
+        <span class="row-title">Media & Entertainment Solutions</span>
+        <span class="row-type">Solution Page · Enterprise</span>
+        <span class="row-arrow">↗</span>
+      </a>
+
+    </section>
+
+        <!-- SOLUTION BRIEFS & EBOOKS -->
     <section class="section" id="briefs">
       <div class="section-header">
         <span class="section-title">Solution Briefs & Ebooks</span>
@@ -840,7 +863,102 @@
       </a>
     </section>
 
-    <!-- SOCIAL CONTENT -->
+    <!-- EMAIL & NURTURE -->
+    <section class="section" id="email">
+      <div class="section-header">
+        <span class="section-title">Email & Sales Enablement</span>
+        <span class="section-count">2</span>
+      </div>
+
+      <div class="featured-row" style="cursor:default; flex-direction:column; gap:0;">
+        <div style="display:flex; gap:20px; align-items:flex-start; width:100%;">
+          <div class="thumb" style="flex-shrink:0;">
+            <div class="thumb-placeholder" style="background:#E6194B; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" stroke="white" stroke-width="3"/><circle cx="12" cy="14" r="3" fill="white"/><circle cx="24" cy="14" r="3" fill="white"/><circle cx="12" cy="24" r="3" fill="white"/><circle cx="24" cy="24" r="3" fill="white"/></svg>
+              <div style="color:white; font-size:9px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; font-family:'DM Sans',sans-serif;">Twilio</div>
+            </div>
+          </div>
+          <div class="featured-body" style="flex:1;">
+            <div class="featured-top">
+              <span class="featured-badge">Featured</span>
+              <span class="row-company tw">Twilio</span>
+            </div>
+            <div class="featured-title">Marketing API Use Case Card Deck</div>
+            <div class="featured-desc">A gamified sales enablement program spanning 34 API use cases — built as a collectible card deck for Twilio's sales team. Each card pairs a use case (IVR, Lead Alerts, Masked Phone Numbers, etc.) with a one-line value prop and named customer examples, making complex API capabilities instantly conversable. The program drove Twilio's highest-attended enablement session and became a go-to artifact for AEs across segments.</div>
+            <div class="featured-meta">Sales Enablement · 34 Use Cases · Highest-attended enablement session</div>
+          </div>
+        </div>
+        <div style="margin-top:20px; width:100%;">
+          <div style="font-size:11px; color:#888; letter-spacing:0.05em; text-transform:uppercase; font-family:'DM Sans',sans-serif; margin-bottom:12px;">Sample cards</div>
+          <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:10px;">
+            <!-- Card 1: Account Notifications -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">Account Notifications</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Resolve fraud or billing issues quickly by notifying customers using SMS</div>
+              <div style="font-size:8px; color:#888;">Xoom, Square</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+            <!-- Card 2: Masked Phone Numbers -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">Masked Phone Numbers</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Keep personal numbers private by routing calls and texts through Twilio</div>
+              <div style="font-size:8px; color:#888;">Lyft, eHarmony</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+            <!-- Card 3: Lead Alerts -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">Lead Alerts</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Alert sellers the moment new buyers express interest via phone or SMS</div>
+              <div style="font-size:8px; color:#888;">Thumbtack, Allstate</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+            <!-- Card 4: Order Notifications -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">Order Notifications</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Keep buyers and sellers updated with SMS order and shipment status</div>
+              <div style="font-size:8px; color:#888;">Grubhub, Nike</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+            <!-- Card 5: Two-Factor Auth -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">Two-Factor Auth</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Strengthen or replace passwords with two-factor authentication via SMS</div>
+              <div style="font-size:8px; color:#888;">Cloudflare, Netflix</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+            <!-- Card 6: IVR -->
+            <div style="border:2.5px solid #E6194B; border-radius:8px; padding:10px 8px 24px; font-family:'DM Sans',sans-serif; position:relative; background:#fff; min-height:130px;">
+              <div style="font-size:10px; font-weight:800; text-transform:uppercase; line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em;">IVR</div>
+              <div style="font-size:8.5px; color:#444; line-height:1.4; margin-bottom:6px;">Build an interactive voice responder with a few lines of code</div>
+              <div style="font-size:8px; color:#888;">AirBnB, Card.com</div>
+              <div style="position:absolute; bottom:6px; right:6px;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#E6194B" stroke-width="2"/><circle cx="6.5" cy="8" r="2" fill="#E6194B"/><circle cx="13.5" cy="8" r="2" fill="#E6194B"/><circle cx="6.5" cy="14" r="2" fill="#E6194B"/><circle cx="13.5" cy="14" r="2" fill="#E6194B"/></svg></div>
+            </div>
+          </div>
+          <div style="font-size:10px; color:#bbb; margin-top:8px; font-family:'DM Sans',sans-serif;">+28 more use cases</div>
+        </div>
+      </div>
+
+      <div class="featured-row" style="cursor:default;">
+        <div class="thumb">
+          <div class="thumb-placeholder meta-thumb">
+            <div class="thumb-placeholder-label">Meta</div>
+            <div class="thumb-placeholder-type">Email Campaign</div>
+          </div>
+        </div>
+        <div class="featured-body">
+          <div class="featured-top">
+            <span class="featured-badge">Featured</span>
+            <span class="row-company meta">Meta</span>
+          </div>
+          <div class="featured-title">CTM Partner Adoption Campaign</div>
+          <div class="featured-desc">A two-pilot email and AYMT nurture program connecting 1.6M Click-to-Messenger advertisers with Facebook Marketing Partners. Pilot 2 targeted SBS accounts spending on CTM ads, drove 96K email opens, 11.7K LP visitors, and 454 estimated incremental leads — surpassing targets by 183% and driving $2.7M in annual revenue impact. Conversion from engaged to connected improved 27% over Pilot 1 through funnel streamlining, region-specific partner recommendations, and mobile LP fixes that drove 4× mobile CTR.</div>
+          <div class="featured-meta">Email · AYMT · Multi-touch Nurture · $2.7M revenue impact · +183% vs. target</div>
+        </div>
+      </div>
+
+    </section>
+
+        <!-- SOCIAL CONTENT -->
     <section class="section" id="social">
       <div class="section-header">
         <span class="section-title">Social Content</span>
@@ -889,4 +1007,37 @@
   const sections = document.querySelectorAll('section[id]');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersect
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+<script>
+  // Tag filtering
+  const tags = document.querySelectorAll('.tag');
+  const allSections = document.querySelectorAll('.section');
+
+  tags.forEach(tag => {
+    tag.addEventListener('click', () => {
+      tags.forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+      const filter = tag.dataset.filter;
+      allSections.forEach(section => {
+        if (filter === 'all') {
+          section.classList.remove('hidden');
+        } else {
+          const allowed = filter.split(',');
+          section.classList.toggle('hidden', !allowed.includes(section.id));
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
